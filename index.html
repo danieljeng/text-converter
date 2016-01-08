@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Anti Spellchecker</title>
+    
+    <link rel="stylesheet" href="frameworks/bootstrap/bootstrap.min.css">
+    
+    <script src="frameworks/jquery/jquery.min.js" defer></script>
+    <script src="frameworks/bootstrap/bootstrap.min.js" defer></script>
+    
+    <script src="javascript/common.js" defer></script>
+    <script src="javascript/spellcheck.js" defer></script>
+
+</head>
+
+<body>
+    
+    <div class="container">
+    
+        <div class="panel panel-primary" style="margin-top:30px;">
+            
+            <div class="panel-heading">
+                <h3 class="panel-title">Unconverted Text</h3>
+            </div>
+            
+            <div class="panel-body">
+                <textarea id="textareaUnconverted" style="width:100%;" rows="20" placeholder="Insert Text Here"></textarea>
+            </div>
+            
+        </div>
+        
+        <button class="btn btn-danger" onclick="convertText()">Konvert Da Text</button>
+        
+        
+        <div class="panel panel-primary" style="margin-top:30px;">
+            
+            <div class="panel-heading">
+                <h3 class="panel-title">Konverted Text</h3>
+            </div>
+            
+            <div class="panel-body">
+                <textarea id="textareaConverted" style="width:100%;" rows="20"></textarea>
+            </div>
+            
+        </div>
+    
+    </div>
+
+</body>
+
+</html>
