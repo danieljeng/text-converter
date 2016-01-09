@@ -56,11 +56,8 @@ function setCaseOfConvertedToken ( unconvertedToken, convertedToken )
     return convertedToken;
 }
 
-
-function convertText()
+function processTextConversion ( unconvertedText )
 {
-    var unconvertedText = $("#textareaUnconverted").val();
-    
     var convertedText = "";
     
     var startTokenIndex = 0;
@@ -104,6 +101,15 @@ function convertText()
             startTokenIndex = idx + 1;
         }
     }
+    
+    return convertedText;
+}
+
+function convertText()
+{
+    var unconvertedText = $("#textareaUnconverted").val();
+    
+    var convertedText = processTextConversion(unconvertedText);
 	
 	$("#textareaConverted").val(convertedText);
 }
