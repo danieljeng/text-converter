@@ -46,13 +46,13 @@ function setCaseOfConvertedToken ( unconvertedToken, convertedToken )
     {
         // no case adjustment needed
     }
-    else if ( unconvertedToken.charAt(0) === unconvertedToken.charAt(0).toUpperCase() )
-    {
-        convertedToken = convertedToken.charAt(0).toUpperCase() + convertedToken.substring(1);
-    }
     else if ( unconvertedToken === unconvertedToken.toUpperCase() )
     {
         convertedToken = convertedToken.toUpperCase();
+    }
+    else if ( unconvertedToken.charAt(0) === unconvertedToken.charAt(0).toUpperCase() )
+    {
+        convertedToken = convertedToken.charAt(0).toUpperCase() + convertedToken.substring(1);
     }
     
     return convertedToken;
@@ -86,7 +86,15 @@ function processTextConversion ( unconvertedText )
             
             var convertedToken = g_mapWordConversion[unconvertedTokenLowercase];
             
-            if ( isValidString(convertedToken) )
+            if ( (true) /* TODO - Add checkbox to toggle this */
+                 && ("o" === unconvertedTokenLowercase.charAt(0))
+                 && (1 < unconvertedTokenLowercase.length) )
+            {
+                convertedToken = "br" + unconvertedTokenLowercase;
+                
+                convertedText += setCaseOfConvertedToken(unconvertedToken, convertedToken);
+            }
+            else if ( isValidString(convertedToken) )
             {
                 convertedText += setCaseOfConvertedToken(unconvertedToken, convertedToken);
             }
