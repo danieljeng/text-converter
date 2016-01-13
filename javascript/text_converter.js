@@ -6,8 +6,6 @@ $(document).ready(
     function()
     {
         readWordConversionsFromFile();
-        
-        $('[data-toggle="tooltip"]').tooltip();
     }
 );
 
