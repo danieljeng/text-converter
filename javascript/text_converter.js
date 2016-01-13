@@ -38,6 +38,24 @@ function readWordConversionsFromFile()
     );
 }
 
+function checkFilterOptions ( unconvertedToken, unconvertedTokenLowercase, convertedToken )
+{
+    var filterToken = "";
+    
+    var enabledBroFilter = $('#idCheckboxBroFilter').is(':checked');
+    
+    if ( enabledBroFilter
+         && ("o" === unconvertedTokenLowercase.charAt(0))
+         && (3 < unconvertedTokenLowercase.length) )
+    {
+        filterToken = "br" + unconvertedTokenLowercase;
+        
+        return setCaseOfConvertedToken(unconvertedToken, filterToken);
+    }
+    
+    return null;
+}
+
 function setCaseOfConvertedToken ( unconvertedToken, convertedToken )
 {
     if ( unconvertedToken === unconvertedToken.toLowerCase() )
@@ -84,13 +102,11 @@ function processTextConversion ( unconvertedText )
             
             var convertedToken = g_mapWordConversion[unconvertedTokenLowercase];
             
-            if ( (true) /* TODO - Add checkbox to toggle this */
-                 && ("o" === unconvertedTokenLowercase.charAt(0))
-                 && (1 < unconvertedTokenLowercase.length) )
+            var filterConversion = checkFilterOptions(unconvertedToken, unconvertedTokenLowercase, convertedToken);
+            
+            if ( isValidString(filterConversion) )
             {
-                convertedToken = "br" + unconvertedTokenLowercase;
-                
-                convertedText += setCaseOfConvertedToken(unconvertedToken, convertedToken);
+                convertedText += filterConversion;
             }
             else if ( isValidString(convertedToken) )
             {

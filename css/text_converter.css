@@ -1,3 +1,6 @@
+.tooltip {
+    z-index: 9999;
+}
 
 .m-t-30 {
     margin-top: 30px;

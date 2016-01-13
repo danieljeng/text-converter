@@ -1,0 +1,53 @@
+.side-options {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  overflow: hidden;
+}
+
+.side-options .side-options-wrapper {
+  margin-right: -220px;
+  position: relative;
+  z-index: 2000;
+  transition-duration: 0.8s;
+}
+
+.side-options .side-options-wrapper.show {
+  margin-right: 0px;
+}
+
+.side-options-wrapper .icon-options {
+  background: #1ab394;
+  position: absolute;
+  padding: 8px 10px 7px 13px;
+  border-radius: 20px 0px 0px 20px;
+  font-size: 16px;
+  top: 0;
+  left: 0px;
+  width: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.side-options-wrapper .options-content {
+  width: 220px;
+  margin-left: 40px;
+  background: #f3f3f4;
+}
+
+.side-options-wrapper .options-content .title {
+  background: #69CCB8;
+  text-align: center;
+  font-weight: 600;
+  display: block;
+  padding: 10px 15px;
+  font-size: 12px;
+}
+
+.options-content .options-item {
+  padding: 10px 30px;
+}
+
+.options-content .options-item .switch {
+  float: right;
+}

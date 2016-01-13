@@ -1,0 +1,41 @@
+<div class="side-options">
+    <div class="side-options-wrapper">
+        <div class="icon-options">
+            <i class="fa fa-cog"></i>
+        </div>
+        
+        <div class="options-content">
+            
+            <div class="title">OPTIONS</div>
+            
+            <div class="options-item">
+                <span uib-tooltip='Any word more than 3 characters and starting with an "o" will have "br" added before it' tooltip-placement="left" tooltip-append-to-body="true">
+                    Bro Filter
+                </span>
+
+                <div class="switch">
+                    <div class="onoffswitch">
+                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxBroFilter" onclick="convertText()" checked>
+                        <label class="onoffswitch-label" for="idCheckboxBroFilter">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<script>
+$(document).ready(
+    function()
+    {
+        $('.icon-options').click(function () {
+            $(".side-options-wrapper").toggleClass("show");
+        });
+    }
+);
+</script>
