@@ -32,3 +32,29 @@ function isValidCharacter ( character )
     
     return false;
 }
+
+function isValidCharacterOrNumber ( character )
+{
+    if ( ('0' <= character)
+         && ('9' >= character) )
+    {
+        return true;
+    }
+    
+    return isValidCharacter(character);
+}
+
+function isCharacterPunctuation ( character )
+{
+    switch ( character )
+    {
+        case '.' :
+        case '!' :
+        case '?' :
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}

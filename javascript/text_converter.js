@@ -120,7 +120,19 @@ function processTextConversion ( unconvertedText )
         
         if ( idx !== lengthUnconvertedText )
         {
-            convertedText += unconvertedText[idx];
+            var characterAtIndex = unconvertedText[idx];
+            
+            var enabledSentenceEnding = $('#idCheckboxSentenceEnding').is(':checked');
+            if ( enabledSentenceEnding )
+            {
+                if ( isCharacterPunctuation(characterAtIndex)
+                     && isValidCharacter(unconvertedText[idx - 1]) )
+                {
+                    convertedText += " in my diapers";
+                }
+            }
+            
+            convertedText += characterAtIndex;
             
             startTokenIndex = idx + 1;
         }
