@@ -33,6 +33,17 @@ function isValidCharacter ( character )
     return false;
 }
 
+function isValidLowercaseCharacter ( character )
+{
+    if ( ('a' <= character)
+         && ('z' >= character) )
+    {
+        return true;
+    }
+    
+    return false;
+}
+
 function isValidCharacterOrNumber ( character )
 {
     if ( ('0' <= character)

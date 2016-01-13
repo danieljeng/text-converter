@@ -126,7 +126,7 @@ function processTextConversion ( unconvertedText )
             if ( enabledSentenceEnding )
             {
                 if ( isCharacterPunctuation(characterAtIndex)
-                     && isValidCharacter(unconvertedText[idx - 1]) )
+                     && isValidLowercaseCharacter(unconvertedText[idx - 1]) )
                 {
                     convertedText += " in my diapers";
                 }
