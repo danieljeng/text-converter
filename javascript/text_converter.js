@@ -146,6 +146,6 @@ function convertText()
     var unconvertedText = $("#textareaUnconverted").val();
     
     var convertedText = processTextConversion(unconvertedText);
-	
-	$("#textareaConverted").val(convertedText);
+    
+    $("#textareaConverted").val(convertedText);
 }
