@@ -15,8 +15,8 @@
                 
                 <div class="switch">
                     <div class="onoffswitch">
-                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxBroFilter" ng-click="convertText()" checked>
-                        <label class="onoffswitch-label" for="idCheckboxBroFilter">
+                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxBroMode" ng-model="options.broMode" ng-click="convertText()">
+                        <label class="onoffswitch-label" for="idCheckboxBroMode">
                             <span class="onoffswitch-inner"></span>
                             <span class="onoffswitch-switch"></span>
                         </label>
@@ -31,7 +31,7 @@
                 
                 <div class="switch">
                     <div class="onoffswitch">
-                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxSentenceEnding" ng-click="convertText()">
+                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxSentenceEnding" ng-model="options.sentenceEnding" ng-click="convertText()">
                         <label class="onoffswitch-label" for="idCheckboxSentenceEnding">
                             <span class="onoffswitch-inner"></span>
                             <span class="onoffswitch-switch"></span>

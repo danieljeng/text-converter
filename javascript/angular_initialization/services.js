@@ -55,7 +55,7 @@ function ServiceTextConverter ( $http )
         };
     
     this.processTextConversion =
-        function ( unconvertedText )
+        function ( unconvertedText, options )
         {
             var convertedText = "";
             
@@ -83,7 +83,7 @@ function ServiceTextConverter ( $http )
                     
                     var convertedToken = _mapWordConversions[unconvertedTokenLowercase];
                     
-                    var filterConversion = checkFilterOptions(unconvertedToken, unconvertedTokenLowercase, convertedToken);
+                    var filterConversion = checkFilterOptions(options, unconvertedToken, unconvertedTokenLowercase, convertedToken);
                     
                     if ( isValidString(filterConversion) )
                     {
@@ -103,14 +103,10 @@ function ServiceTextConverter ( $http )
                 {
                     var characterAtIndex = unconvertedText[idx];
                     
-                    var enabledSentenceEnding = $('#idCheckboxSentenceEnding').is(':checked');
-                    if ( enabledSentenceEnding )
+                    var stringSentenceEnding = checkSentenceEnding(options.sentenceEnding, idx, characterAtIndex, unconvertedText);
+                    if ( isValidString(stringSentenceEnding) )
                     {
-                        if ( isCharacterPunctuation(characterAtIndex)
-                             && isValidLowercaseCharacter(unconvertedText[idx - 1]) )
-                        {
-                            convertedText += " in my diapers";
-                        }
+                        convertedText += stringSentenceEnding;
                     }
                     
                     convertedText += characterAtIndex;
@@ -122,11 +118,11 @@ function ServiceTextConverter ( $http )
             return convertedText;
         };
     
-    function checkFilterOptions ( unconvertedToken, unconvertedTokenLowercase, convertedToken )
+    function checkFilterOptions ( options, unconvertedToken, unconvertedTokenLowercase, convertedToken )
     {
         var filterToken = "";
         
-        var enabledBroFilter = $('#idCheckboxBroFilter').is(':checked');
+        var enabledBroFilter = options.broMode;
         
         if ( enabledBroFilter
              && ("o" === unconvertedTokenLowercase.charAt(0))
@@ -140,11 +136,28 @@ function ServiceTextConverter ( $http )
         return null;
     }
     
+    function checkSentenceEnding ( enabledSentenceEnding, index, characterAtIndex, unconvertedText )
+    {
+        var stringSentenceEnding = "";
+        
+        if ( enabledSentenceEnding )
+        {
+            if ( isCharacterPunctuation(characterAtIndex)
+                 && isValidLowercaseCharacter(unconvertedText[index - 1]) )
+            {
+                stringSentenceEnding = " in my diapers";
+            }
+        }
+        
+        return stringSentenceEnding;
+    }
+    
     function setCaseOfConvertedToken ( unconvertedToken, convertedToken )
     {
         if ( unconvertedToken === unconvertedToken.toLowerCase() )
         {
             // no case adjustment needed
+            return convertedToken;
         }
         else if ( unconvertedToken === unconvertedToken.toUpperCase() )
         {
