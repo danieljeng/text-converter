@@ -81,17 +81,17 @@ function ServiceTextConverter ( $http )
                     var unconvertedToken          = unconvertedText.substring(startTokenIndex, idx);
                     var unconvertedTokenLowercase = unconvertedToken.toLowerCase();
                     
-                    var convertedToken = _mapWordConversions[unconvertedTokenLowercase];
+                    var convertedTokenLowercase = _mapWordConversions[unconvertedTokenLowercase];
                     
-                    var filterConversion = checkFilterOptions(options, unconvertedToken, unconvertedTokenLowercase, convertedToken);
-                    
-                    if ( isValidString(filterConversion) )
+                    var filterConversionTokenLowercase = checkFilterOptions(options, unconvertedTokenLowercase);
+                    if ( isValidString(filterConversionTokenLowercase) )
                     {
-                        convertedText += filterConversion;
+                        convertedTokenLowercase = filterConversionTokenLowercase;
                     }
-                    else if ( isValidString(convertedToken) )
+                    
+                    if ( isValidString(convertedTokenLowercase) )
                     {
-                        convertedText += setCaseOfConvertedToken(unconvertedToken, convertedToken);
+                        convertedText += setCaseOfConvertedToken(unconvertedToken, convertedTokenLowercase);
                     }
                     else
                     {
@@ -118,9 +118,9 @@ function ServiceTextConverter ( $http )
             return convertedText;
         };
     
-    function checkFilterOptions ( options, unconvertedToken, unconvertedTokenLowercase, convertedToken )
+    function checkFilterOptions ( options, unconvertedTokenLowercase )
     {
-        var filterToken = "";
+        var filterTokenLowercase = "";
         
         var enabledBroFilter = options.broMode;
         
@@ -128,9 +128,9 @@ function ServiceTextConverter ( $http )
              && ("o" === unconvertedTokenLowercase.charAt(0))
              && (3 < unconvertedTokenLowercase.length) )
         {
-            filterToken = "br" + unconvertedTokenLowercase;
+            filterTokenLowercase = "br" + unconvertedTokenLowercase;
             
-            return setCaseOfConvertedToken(unconvertedToken, filterToken);
+            return filterTokenLowercase;
         }
         
         return null;
@@ -152,22 +152,23 @@ function ServiceTextConverter ( $http )
         return stringSentenceEnding;
     }
     
-    function setCaseOfConvertedToken ( unconvertedToken, convertedToken )
+    function setCaseOfConvertedToken ( unconvertedToken, convertedTokenLowercase )
     {
+        var convertedTokenWithCase = convertedTokenLowercase;
+        
         if ( unconvertedToken === unconvertedToken.toLowerCase() )
         {
-            // no case adjustment needed
-            return convertedToken;
+            convertedTokenWithCase = convertedTokenLowercase;
         }
         else if ( unconvertedToken === unconvertedToken.toUpperCase() )
         {
-            convertedToken = convertedToken.toUpperCase();
+            convertedTokenWithCase = convertedTokenLowercase.toUpperCase();
         }
         else if ( unconvertedToken.charAt(0) === unconvertedToken.charAt(0).toUpperCase() )
         {
-            convertedToken = convertedToken.charAt(0).toUpperCase() + convertedToken.substring(1);
+            convertedTokenWithCase = convertedTokenLowercase.charAt(0).toUpperCase() + convertedTokenLowercase.substring(1);
         }
         
-        return convertedToken;
+        return convertedTokenWithCase;
     }
 }

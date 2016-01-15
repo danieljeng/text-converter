@@ -9,35 +9,23 @@
             <div class="title">OPTIONS</div>
             
             <div class="options-item">
+                
                 <span uib-tooltip='Any word more than 3 characters and starting with an "o" will have "br" added before it' tooltip-placement="left" tooltip-append-to-body="true">
                     Bro Mode
                 </span>
                 
-                <div class="switch">
-                    <div class="onoffswitch">
-                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxBroMode" ng-model="options.broMode" ng-click="convertText()">
-                        <label class="onoffswitch-label" for="idCheckboxBroMode">
-                            <span class="onoffswitch-inner"></span>
-                            <span class="onoffswitch-switch"></span>
-                        </label>
-                    </div>
-                </div>
+                <option-switch model-variable="options.broMode" click-function="convertText"></option-switch>
+                
             </div>
             
             <div class="options-item">
+                
                 <span uib-tooltip='This will add "in my diapers" to the end of sentences' tooltip-placement="left" tooltip-append-to-body="true">
                     In My Diapers
                 </span>
                 
-                <div class="switch">
-                    <div class="onoffswitch">
-                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxSentenceEnding" ng-model="options.sentenceEnding" ng-click="convertText()">
-                        <label class="onoffswitch-label" for="idCheckboxSentenceEnding">
-                            <span class="onoffswitch-inner"></span>
-                            <span class="onoffswitch-switch"></span>
-                        </label>
-                    </div>
-                </div>
+                <option-switch model-variable="options.sentenceEnding" click-function="convertText"></option-switch>
+                
             </div>
             
         </div>
