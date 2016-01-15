@@ -1,6 +1,6 @@
 <div class="side-options">
-    <div class="side-options-wrapper">
-        <div class="icon-options">
+    <div class="side-options-wrapper" ng-class="{'show' : flagVisibleSideOptions}">
+        <div class="icon-options" ng-click="flagVisibleSideOptions = !flagVisibleSideOptions">
             <i class="fa fa-cog"></i>
         </div>
         
@@ -15,7 +15,7 @@
                 
                 <div class="switch">
                     <div class="onoffswitch">
-                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxBroFilter" onclick="convertText()" checked>
+                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxBroFilter" ng-click="convertText()" checked>
                         <label class="onoffswitch-label" for="idCheckboxBroFilter">
                             <span class="onoffswitch-inner"></span>
                             <span class="onoffswitch-switch"></span>
@@ -31,7 +31,7 @@
                 
                 <div class="switch">
                     <div class="onoffswitch">
-                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxSentenceEnding" onclick="convertText()">
+                        <input type="checkbox" class="onoffswitch-checkbox" id="idCheckboxSentenceEnding" ng-click="convertText()">
                         <label class="onoffswitch-label" for="idCheckboxSentenceEnding">
                             <span class="onoffswitch-inner"></span>
                             <span class="onoffswitch-switch"></span>
@@ -44,14 +44,3 @@
         
     </div>
 </div>
-
-<script>
-$(document).ready(
-    function()
-    {
-        $('.icon-options').click(function () {
-            $(".side-options-wrapper").toggleClass("show");
-        });
-    }
-);
-</script>

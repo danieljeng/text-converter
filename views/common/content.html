@@ -9,7 +9,7 @@
             </div>
             
             <div class="panel-body">
-                <textarea id="textareaUnconverted" rows="20" placeholder="Insert Text Here" onkeyup="convertText()"></textarea>
+                <textarea ng-model="$parent.textUnconverted" rows="20" placeholder="Insert Text Here" ng-keyup="convertText()"></textarea>
             </div>
             
         </div>
@@ -25,7 +25,7 @@
             </div>
             
             <div class="panel-body">
-                <textarea id="textareaConverted" rows="20" readonly></textarea>
+                <textarea ng-model="textConverted" rows="20" readonly></textarea>
             </div>
             
         </div>

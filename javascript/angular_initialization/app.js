@@ -3,7 +3,7 @@
 
 (function () {
     angular.module(
-        "textConverter",
+        "appTextConverter",
         [
             "ui.bootstrap",
         ]
