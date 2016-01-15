@@ -6,7 +6,7 @@ angular
     .controller("controllerTextConverter", controllerTextConverter)
 
 
-function controllerTextConverter ( $scope, $http, ServiceTextConverter )
+function controllerTextConverter ( $scope, $http, $uibModal, ServiceTextConverter )
 {
     $scope.textUnconverted = "";
     $scope.textConverted   = "";
@@ -16,6 +16,26 @@ function controllerTextConverter ( $scope, $http, ServiceTextConverter )
         broMode        : true,
         sentenceEnding : false,
     };
+    
+    $scope.launchModalWordMappings =
+        function ()
+        {
+            var modalInstance = $uibModal.open(
+                {
+                    templateUrl : "views/modals/word_mappings.html",
+                    controller  : controllerModalWordMappings,
+                    
+                    resolve :
+                    {
+                        mapWordConversions :
+                            function ()
+                            {
+                                return ServiceTextConverter.getMapWordConversions();
+                            },
+                    },
+                }
+            );
+        };
     
     $scope.convertText =
         function ()
