@@ -29,6 +29,7 @@
 
 textarea {
     width: 100%;
+    resize: vertical;
 }
 
 .table > thead > tr > th,
