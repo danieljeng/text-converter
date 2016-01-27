@@ -2,7 +2,7 @@
 
 
 angular
-    .module("appTextConverter")
+    .module(APP_NAME)
     .controller("controllerTextConverter", controllerTextConverter)
 
 
@@ -20,7 +20,7 @@ function controllerTextConverter ( $scope, $http, $uibModal, ServiceTextConverte
     $scope.launchModalWordMappings =
         function ()
         {
-            var modalInstance = $uibModal.open(
+            let modalInstance = $uibModal.open(
                 {
                     templateUrl : "views/modals/word_mappings.html",
                     controller  : controllerModalWordMappings,
@@ -43,7 +43,7 @@ function controllerTextConverter ( $scope, $http, $uibModal, ServiceTextConverte
             $scope.textConverted = ServiceTextConverter.processTextConversion($scope.textUnconverted, $scope.options);
         };
     
-    function initializeController()
+    function initializeController ()
     {
         ServiceTextConverter.readWordConversionsFromFile();
     }

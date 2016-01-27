@@ -1,12 +1,14 @@
 "use strict";
 
+
 angular
-    .module("appTextConverter")
+    .module(APP_NAME)
     .service("ServiceTextConverter", ServiceTextConverter);
+
 
 function ServiceTextConverter ( $http )
 {
-    var _mapWordConversions = {};
+    let _mapWordConversions = {};
     
     this.getMapWordConversions =
         function ()
@@ -29,17 +31,17 @@ function ServiceTextConverter ( $http )
                 // Successful response
                 function ( response )
                 {
-                    var data = response.data;
+                    let data = response.data;
                     
-                    var wordConversions = data.split("\n");
+                    let wordConversions = data.split("\n");
             
-                    var lengthWordConversions = wordConversions.length;
-                    for ( var idx = 0; idx < lengthWordConversions; ++idx )
+                    let lengthWordConversions = wordConversions.length;
+                    for ( let idx = 0; idx < lengthWordConversions; ++idx )
                     {
-                        var wordConversion = wordConversions[idx].split(",");
+                        let wordConversion = wordConversions[idx].split(",");
                         
-                        var unconvertedWord = wordConversion[0];
-                        var convertedWord   = wordConversion[1];
+                        let unconvertedWord = wordConversion[0];
+                        let convertedWord   = wordConversion[1];
                         
                         if ( isValidString(unconvertedWord)
                              && isValidString(convertedWord) )
@@ -57,12 +59,12 @@ function ServiceTextConverter ( $http )
     this.processTextConversion =
         function ( unconvertedText, options )
         {
-            var convertedText = "";
+            let convertedText = "";
             
-            var startTokenIndex = 0;
+            let startTokenIndex = 0;
             
-            var lengthUnconvertedText = unconvertedText.length;
-            for ( var idx = 0; idx < lengthUnconvertedText; ++idx )
+            let lengthUnconvertedText = unconvertedText.length;
+            for ( let idx = 0; idx < lengthUnconvertedText; ++idx )
             {
                 if ( isValidCharacter(unconvertedText[idx]) )
                 {
@@ -78,12 +80,12 @@ function ServiceTextConverter ( $http )
                 
                 if ( startTokenIndex !== idx )
                 {
-                    var unconvertedToken          = unconvertedText.substring(startTokenIndex, idx);
-                    var unconvertedTokenLowercase = unconvertedToken.toLowerCase();
+                    let unconvertedToken          = unconvertedText.substring(startTokenIndex, idx);
+                    let unconvertedTokenLowercase = unconvertedToken.toLowerCase();
                     
-                    var convertedTokenLowercase = _mapWordConversions[unconvertedTokenLowercase];
+                    let convertedTokenLowercase = _mapWordConversions[unconvertedTokenLowercase];
                     
-                    var filterConversionTokenLowercase = checkFilterOptions(options, unconvertedTokenLowercase);
+                    let filterConversionTokenLowercase = checkFilterOptions(options, unconvertedTokenLowercase);
                     if ( isValidString(filterConversionTokenLowercase) )
                     {
                         convertedTokenLowercase = filterConversionTokenLowercase;
@@ -101,9 +103,9 @@ function ServiceTextConverter ( $http )
                 
                 if ( idx !== lengthUnconvertedText )
                 {
-                    var characterAtIndex = unconvertedText[idx];
+                    let characterAtIndex = unconvertedText[idx];
                     
-                    var stringSentenceEnding = checkSentenceEnding(options.sentenceEnding, idx, characterAtIndex, unconvertedText);
+                    let stringSentenceEnding = checkSentenceEnding(options.sentenceEnding, idx, characterAtIndex, unconvertedText);
                     if ( isValidString(stringSentenceEnding) )
                     {
                         convertedText += stringSentenceEnding;
@@ -120,9 +122,9 @@ function ServiceTextConverter ( $http )
     
     function checkFilterOptions ( options, unconvertedTokenLowercase )
     {
-        var filterTokenLowercase = "";
+        let filterTokenLowercase = "";
         
-        var enabledBroFilter = options.broMode;
+        let enabledBroFilter = options.broMode;
         
         if ( enabledBroFilter
              && ("o" === unconvertedTokenLowercase.charAt(0))
@@ -138,7 +140,7 @@ function ServiceTextConverter ( $http )
     
     function checkSentenceEnding ( enabledSentenceEnding, index, characterAtIndex, unconvertedText )
     {
-        var stringSentenceEnding = "";
+        let stringSentenceEnding = "";
         
         if ( enabledSentenceEnding )
         {
@@ -154,7 +156,7 @@ function ServiceTextConverter ( $http )
     
     function setCaseOfConvertedToken ( unconvertedToken, convertedTokenLowercase )
     {
-        var convertedTokenWithCase = convertedTokenLowercase;
+        let convertedTokenWithCase = convertedTokenLowercase;
         
         if ( unconvertedToken === unconvertedToken.toLowerCase() )
         {

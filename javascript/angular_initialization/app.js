@@ -1,9 +1,11 @@
 "use strict";
 
 
+const APP_NAME = "appTextConverter";
+
 (function () {
     angular.module(
-        "appTextConverter",
+        APP_NAME,
         [
             "ui.bootstrap",
             "datatables",

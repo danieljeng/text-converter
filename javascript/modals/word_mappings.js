@@ -1,5 +1,6 @@
 "use strict";
 
+
 function controllerModalWordMappings ( $scope, $uibModalInstance, $http, mapWordConversions )
 {
     $scope.wordMappings = [];
@@ -16,9 +17,9 @@ function controllerModalWordMappings ( $scope, $uibModalInstance, $http, mapWord
             $scope.wordMappings.splice(index, 1);
         };
     
-    function initializeController()
+    function initializeController ()
     {
-        for ( var idx in mapWordConversions )
+        for ( let idx in mapWordConversions )
         {
             $scope.wordMappings.push(
                 {

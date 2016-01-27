@@ -2,15 +2,15 @@
 
 
 angular
-    .module("appTextConverter")
+    .module(APP_NAME)
     .directive("optionSwitch", optionSwitch)
     .directive("modalHeaderCloseButton", modalHeaderCloseButton)
     .directive("modalFooterCloseButton", modalFooterCloseButton);
 
 
-function optionSwitch()
+function optionSwitch ()
 {
-    var uniqueID = 1;
+    let _uniqueID = 1;
     
     return {
         restrict : "AE",
@@ -25,8 +25,8 @@ function optionSwitch()
         link :
             function ( scope, elem, attrs )
             {
-                var itemID = "idOptionSwitch" + uniqueID;
-                uniqueID++;
+                let itemID = "idOptionSwitch" + _uniqueID;
+                _uniqueID++;
                 
                 elem.find("input").attr("id" , itemID);
                 elem.find("label").attr("for", itemID);
@@ -34,7 +34,7 @@ function optionSwitch()
     };
 }
 
-function modalHeaderCloseButton()
+function modalHeaderCloseButton ()
 {
     return {
         restrict : "AE",
@@ -46,7 +46,7 @@ function modalHeaderCloseButton()
     };
 }
 
-function modalFooterCloseButton()
+function modalFooterCloseButton ()
 {
 	return {
         restrict : "AE",
