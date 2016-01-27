@@ -19,7 +19,7 @@ function controllerModalWordMappings ( $scope, $uibModalInstance, $http, mapWord
     
     function initializeController ()
     {
-        for ( let idx in mapWordConversions )
+        for ( var idx in mapWordConversions )
         {
             $scope.wordMappings.push(
                 {

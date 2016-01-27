@@ -10,7 +10,7 @@ angular
 
 function optionSwitch ()
 {
-    let _uniqueID = 1;
+    var _uniqueID = 1;
     
     return {
         restrict : "AE",
@@ -25,7 +25,7 @@ function optionSwitch ()
         link :
             function ( scope, elem, attrs )
             {
-                let itemID = "idOptionSwitch" + _uniqueID;
+                var itemID = "idOptionSwitch" + _uniqueID;
                 _uniqueID++;
                 
                 elem.find("input").attr("id" , itemID);

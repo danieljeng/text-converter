@@ -1,7 +1,7 @@
 "use strict";
 
 
-const APP_NAME = "appTextConverter";
+var APP_NAME = "appTextConverter";
 
 (function () {
     angular.module(

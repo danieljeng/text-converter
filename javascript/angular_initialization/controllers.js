@@ -20,7 +20,7 @@ function controllerTextConverter ( $scope, $http, $uibModal, ServiceTextConverte
     $scope.launchModalWordMappings =
         function ()
         {
-            let modalInstance = $uibModal.open(
+            var modalInstance = $uibModal.open(
                 {
                     templateUrl : "views/modals/word_mappings.html",
                     controller  : controllerModalWordMappings,
