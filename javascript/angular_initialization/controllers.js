@@ -17,31 +17,28 @@ function controllerTextConverter ( $scope, $http, $uibModal, ServiceTextConverte
         sentenceEnding : false,
     };
     
-    $scope.launchModalWordMappings =
-        function ()
-        {
-            var modalInstance = $uibModal.open(
+    $scope.launchModalWordMappings = function ()
+    {
+        var modalInstance = $uibModal.open(
+            {
+                templateUrl : "views/modals/word_mappings.html",
+                controller  : controllerModalWordMappings,
+                
+                resolve :
                 {
-                    templateUrl : "views/modals/word_mappings.html",
-                    controller  : controllerModalWordMappings,
-                    
-                    resolve :
+                    mapWordConversions : function ()
                     {
-                        mapWordConversions :
-                            function ()
-                            {
-                                return ServiceTextConverter.getMapWordConversions();
-                            },
+                        return ServiceTextConverter.getMapWordConversions();
                     },
-                }
-            );
-        };
+                },
+            }
+        );
+    };
     
-    $scope.convertText =
-        function ()
-        {
-            $scope.textConverted = ServiceTextConverter.processTextConversion($scope.textUnconverted, $scope.options);
-        };
+    $scope.convertText = function ()
+    {
+        $scope.textConverted = ServiceTextConverter.processTextConversion($scope.textUnconverted, $scope.options);
+    };
     
     function initializeController ()
     {

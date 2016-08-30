@@ -5,17 +5,10 @@ function controllerModalWordMappings ( $scope, $uibModalInstance, $http, mapWord
 {
     $scope.wordMappings = [];
     
-    $scope.cancel =
-        function ()
-        {
-            $uibModalInstance.dismiss("cancel");
-        };
-    
-    $scope.deleteWordMapping =
-        function ( index )
-        {
-            $scope.wordMappings.splice(index, 1);
-        };
+    $scope.cancel = function ()
+    {
+        $uibModalInstance.dismiss("cancel");
+    };
     
     function initializeController ()
     {

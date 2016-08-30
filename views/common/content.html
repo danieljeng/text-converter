@@ -1,15 +1,23 @@
+
 <div class="row m-t-30">
-            
+    
     <div class="col-xs-6">
         
         <div class="panel panel-primary">
-    
+            
             <div class="panel-heading">
                 <h3 class="panel-title">Unconverted</h3>
             </div>
             
             <div class="panel-body">
-                <textarea ng-model="$parent.textUnconverted" rows="20" placeholder="Insert Text Here" ng-keyup="convertText()"></textarea>
+                <textarea
+                    ng-model="$parent.textUnconverted"
+                    rows="20"
+                    placeholder="Insert Text Here"
+                    ng-keyup="convertText()"
+                    autofocus
+                >
+                </textarea>
             </div>
             
         </div>
@@ -25,7 +33,12 @@
             </div>
             
             <div class="panel-body">
-                <textarea ng-model="textConverted" rows="20" readonly></textarea>
+                <textarea
+                    ng-model="textConverted"
+                    rows="20"
+                    readonly
+                >
+                </textarea>
             </div>
             
         </div>

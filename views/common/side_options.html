@@ -1,3 +1,4 @@
+
 <div class="side-options">
     <div class="side-options-wrapper" ng-class="{'show' : flagVisibleSideOptions}">
         <div class="icon-options" ng-click="flagVisibleSideOptions = !flagVisibleSideOptions">
@@ -10,7 +11,11 @@
             
             <div class="options-item">
                 
-                <span uib-tooltip='Any word more than 3 characters and starting with an "o" will have "br" added before it' tooltip-placement="left" tooltip-append-to-body="true">
+                <span
+                    uib-tooltip='Any word more than 3 characters and starting with an "o" will have "br" added before it'
+                    tooltip-placement="left"
+                    tooltip-append-to-body="true"
+                >
                     Bro Mode
                 </span>
                 
@@ -20,7 +25,11 @@
             
             <div class="options-item">
                 
-                <span uib-tooltip='This will add "in my diapers" to the end of sentences' tooltip-placement="left" tooltip-append-to-body="true">
+                <span
+                    uib-tooltip='This will add "in my diapers" to the end of sentences'
+                    tooltip-placement="left"
+                    tooltip-append-to-body="true"
+                >
                     In My Diapers
                 </span>
                 
@@ -29,7 +38,13 @@
             </div>
             
             <div class="options-item">
-                <button class="btn btn-default width-100" ng-click="launchModalWordMappings()">Word Mappings</button>
+                <button
+                    class="btn btn-default width-100"
+                    ng-click="launchModalWordMappings()"
+                    tabindex="-1"
+                >
+                    Word Mappings
+                </button>
             </div>
             
         </div>

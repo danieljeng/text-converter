@@ -22,15 +22,14 @@ function optionSwitch ()
         
         templateUrl : "views/components/option_switch.html",
         
-        link :
-            function ( scope, elem, attrs )
-            {
-                var itemID = "idOptionSwitch" + _uniqueID;
-                _uniqueID++;
-                
-                elem.find("input").attr("id" , itemID);
-                elem.find("label").attr("for", itemID);
-            }
+        link : function ( scope, elem, attrs )
+        {
+            var itemID = "idOptionSwitch" + _uniqueID;
+            _uniqueID++;
+            
+            elem.find("input").attr("id" , itemID);
+            elem.find("label").attr("for", itemID);
+        }
     };
 }
 
